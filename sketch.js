@@ -15,8 +15,11 @@ function draw() {
 	// Second
 	push();
 	let displacedSecBy90Deg = second() - 15;
+	let size = 10;
+	let speed = 2;
+	size = map(sin(frameCount * speed), -1.0, 1.0, 10, 30);
 	translate(p5.Vector.fromAngle(displacedSecBy90Deg * ((2 * PI) / 60), canvasWidth / 4));
-	circle(canvasWidth / 2, canvasHeight / 2, 20);
+	ellipse(canvasWidth / 2, canvasHeight / 2, size, size);
 	pop();
 
 	// Hour
