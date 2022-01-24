@@ -12,10 +12,28 @@ function draw() {
 	noFill();
 	circle(canvasWidth / 2, canvasHeight / 2, canvasWidth / 2);
 
+	// Second
 	push();
 	let displacedSecBy90Deg = second() - 15;
 	translate(p5.Vector.fromAngle(displacedSecBy90Deg * ((2 * PI) / 60), canvasWidth / 4));
-	circle(canvasWidth / 2, canvasHeight / 2, 10);
+	circle(canvasWidth / 2, canvasHeight / 2, 20);
+	pop();
+
+	// Hour
+	push();
+	strokeWeight(10);
+	strokeCap(SQUARE);
+	angleMode(DEGREES);
+	let hourIncrement = 15;
+	let totalHourInDegrees = hour() * hourIncrement;
+
+	for (let i = 0; i < totalHourInDegrees; i += 15) {
+		stroke(i, 150, 200);
+		let xPos = canvasWidth / 2;
+		let yPos = canvasHeight / 2;
+		let radius = canvasWidth / 4;
+		line(xPos, yPos, xPos + radius * sin(i), yPos - radius * cos(i));
+	}
 	pop();
 
 	// Hour
