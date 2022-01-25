@@ -32,6 +32,10 @@ function draw() {
 
 	// Minute
 	push();
+	if (prevMin !== minute()) {
+		console.log(minute());
+	}
+	prevMin = minute();
 	angleMode(DEGREES);
 	stroke(255);
 	fill(255,255,255);
