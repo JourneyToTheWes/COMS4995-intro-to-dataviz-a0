@@ -39,6 +39,27 @@ function draw() {
 	}
 	pop();
 
+	// Minute
+	push();
+	angleMode(DEGREES);
+	stroke(0);
+	noFill();
+	let displacedMinBy90Deg = minute() - 15;
+	let x = canvasWidth / 2;
+	let y = canvasHeight / 2;
+	translate(p5.Vector.fromAngle(displacedMinBy90Deg * ((2 * PI) / 60), canvasWidth / 4));
+	let angle = 360 / 3;
+	beginShape();
+	for (let i = 0; i < 360; i += angle) {
+		let radius = 25;
+		let x2 = x + sin(i) * radius;
+		let y2 = y + cos(i) * radius;
+		vertex(x2, y2);
+	}
+	endShape(CLOSE);
+	// triangle(canvasWidth / 2 - 25, canvasHeight / 2 - 25, canvasWidth / 2, canvasHeight / 2 - 50, canvasWidth / 2 + 25, canvasHeight / 2 - 25);
+	pop();
+
 	// Hour
 	fill(180);
 	text(hour(), 10, 30); // Displays information specified in first parameter in x and y position
