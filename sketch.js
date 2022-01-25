@@ -15,11 +15,11 @@ function draw() {
 	// Second
 	push();
 	let displacedSecBy90Deg = second() - 15;
-	let size = 10;
-	let speed = 2;
-	size = map(sin(frameCount * speed), -1.0, 1.0, 10, 30);
+	let secondEllipseSize = 10;
+	let secondEllipseSpeed = 2;
+	secondEllipseSize = map(sin(frameCount * secondEllipseSpeed), -1.0, 1.0, 10, 30);
 	translate(p5.Vector.fromAngle(displacedSecBy90Deg * ((2 * PI) / 60), canvasWidth / 4));
-	ellipse(canvasWidth / 2, canvasHeight / 2, size, size);
+	ellipse(canvasWidth / 2, canvasHeight / 2, secondEllipseSize, secondEllipseSize);
 	pop();
 
 	// Hour
@@ -49,11 +49,13 @@ function draw() {
 	let y = canvasHeight / 2;
 	translate(p5.Vector.fromAngle(displacedMinBy90Deg * ((2 * PI) / 60), canvasWidth / 4));
 	let angle = 360 / 3;
+	let minuteTriangleSize = 20;
+	let minuteTriangleSpeed = 3;
+	minuteTriangleSize = map(sin(frameCount * minuteTriangleSpeed), -1.0, 1.0, 20, 30);
 	beginShape();
-	for (let i = 0; i < 360; i += angle) {
-		let radius = 25;
-		let x2 = x + sin(i) * radius;
-		let y2 = y + cos(i) * radius;
+	for (let i = 0; i < 360; i += angle) {		
+		let x2 = x + sin(i) * minuteTriangleSize;
+		let y2 = y + cos(i) * minuteTriangleSize;
 		vertex(x2, y2);
 	}
 	endShape(CLOSE);
