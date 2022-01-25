@@ -1,26 +1,17 @@
-const canvasWidth = 800;
-const canvasHeight = 600;
+let canvasWidth = 800;
+let canvasHeight = 600;
 function setup() {
 	createCanvas(canvasWidth, canvasHeight); // make an HTML canvas element width x height pixels
 }
 
 let prevMin;
 function draw() {
-	background(225); // sets color of canvas background
+	background('rgb(220, 220, 220)'); // sets color of canvas background
 	textSize(32);
 
 	noFill();
+	noStroke();
 	circle(canvasWidth / 2, canvasHeight / 2, canvasWidth / 2);
-
-	// Second
-	push();
-	let displacedSecBy90Deg = second() - 15;
-	let secondEllipseSize = 10;
-	let secondEllipseSpeed = 2;
-	secondEllipseSize = map(sin(frameCount * secondEllipseSpeed), -1.0, 1.0, 10, 30);
-	translate(p5.Vector.fromAngle(displacedSecBy90Deg * ((2 * PI) / 60), canvasWidth / 4));
-	ellipse(canvasWidth / 2, canvasHeight / 2, secondEllipseSize, secondEllipseSize);
-	pop();
 
 	// Hour
 	push();
@@ -42,8 +33,8 @@ function draw() {
 	// Minute
 	push();
 	angleMode(DEGREES);
-	stroke(0);
-	noFill();
+	stroke(255);
+	fill(255,255,255);
 	let displacedMinBy90Deg = minute() - 15;
 	let x = canvasWidth / 2;
 	let y = canvasHeight / 2;
@@ -59,22 +50,16 @@ function draw() {
 		vertex(x2, y2);
 	}
 	endShape(CLOSE);
-	// triangle(canvasWidth / 2 - 25, canvasHeight / 2 - 25, canvasWidth / 2, canvasHeight / 2 - 50, canvasWidth / 2 + 25, canvasHeight / 2 - 25);
 	pop();
 
-	// Hour
-	fill(180);
-	text(hour(), 10, 30); // Displays information specified in first parameter in x and y position
-	
-	// Minute
-	fill(100);
-	if (prevMin !== minute()) {
-		console.log(minute());
-	}
-	prevMin = minute();
-	text(minute(), 10, 60);
-	
 	// Second
-	fill(0);
-	text(second(), 10, 90);
+	push();
+	fill(0, 0, 0);
+	let displacedSecBy90Deg = second() - 15;
+	let secondEllipseSize = 10;
+	let secondEllipseSpeed = 2;
+	secondEllipseSize = map(sin(frameCount * secondEllipseSpeed), -1.0, 1.0, 10, 30);
+	translate(p5.Vector.fromAngle(displacedSecBy90Deg * ((2 * PI) / 60), canvasWidth / 4));
+	ellipse(canvasWidth / 2, canvasHeight / 2, secondEllipseSize, secondEllipseSize);
+	pop();
 }
